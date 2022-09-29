@@ -11,12 +11,20 @@ public class PlayerMovment : MonoBehaviour
     private float minBound_X = -9.55f, maxBound_X = 63.79f, minBound_Y =-3.09f, maxBound_Y =-1f;
     Vector3 tempos;
     private float xAxis, yAxis;
+    private PlayerAnimation playeranimation;
+    private void Awake()
+    {
+        playeranimation = GetComponent<PlayerAnimation>();
+    }
 
     void Update()
     {
         HandelMovment();
-       
-        
+        HandelAnimation();
+        HandelFacingDirection();
+
+
+
     }
     void HandelMovment()
     {
@@ -35,6 +43,26 @@ public class PlayerMovment : MonoBehaviour
             tempos.y = minBound_Y;
         transform.position = tempos;
         Debug.Log("starrt");
+
+    }
+    void HandelAnimation()
+    {
+        if (Mathf.Abs(xAxis) > 0 || Mathf.Abs(yAxis) > 0)
+            playeranimation.PlayAnimation(Tag.WALK_ANIMATION_NAME);
+        else
+            playeranimation.PlayAnimation(Tag.IDEL_ANIMATION_NAME);
+
+    }
+    public void HandelFacingDirection()
+    {
+        if (xAxis > 0)
+        {
+            playeranimation.SetFacingDirection(true);
+
+        }else if (xAxis < 0)
+        {
+            playeranimation.SetFacingDirection(false);
+        }
 
     }
 }
