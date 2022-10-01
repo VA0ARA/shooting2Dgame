@@ -5,15 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    private float movespeed = 15f;
+    private float movespeed = 5f;
     [SerializeField]
     private float damageAmouny = 35f;
     private Vector3 MoveVector = Vector3.zero;
     private Vector3 tempScale;
-    private void Start()
+/*    private void Start()
     {
         SetNegtiveSpeed();
-    }
+    }*/
 
     private void Update()
     {
