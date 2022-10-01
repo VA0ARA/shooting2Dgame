@@ -11,6 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float stoppingDistance = 1.5f;
     private PlayerAnimation enemyanimation;
+    [SerializeField]
+    private float AttackWaittime=2.5f;
+    private float AttackTimer;
+    [SerializeField]
+    private float AttackFinishedWaitTime=0.5f;
+    private float AttackFinishTimer;
     private void Awake()
     {
         PlayerTarget = GameObject.FindWithTag(Tag.player_TAG).transform;
@@ -35,6 +41,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            CheckIfatackFinished();
+            Attack();
 
         }
     }
@@ -52,6 +60,26 @@ public class Enemy : MonoBehaviour
         transform.localScale = tempScale;
          
     }
+    void CheckIfatackFinished()
+    {
+        if (Time.time > AttackTimer)
+        {
+            enemyanimation.PlayAnimation(Tag.IDEL_ANIMATION_NAME);
+        }
+
+    }
+    void Attack()
+    {
+        if (Time.time > AttackTimer)
+        {
+            AttackFinishTimer = Time.time + AttackFinishedWaitTime;
+            AttackTimer = Time.time + AttackWaittime;
+
+            enemyanimation.PlayAnimation(Tag.ATTACK_ANIMATION_NAME);
+        }
+
+    }
+
 
 
 

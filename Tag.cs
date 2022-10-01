@@ -16,7 +16,7 @@ public static class Tag
     public static string WALK_ANIMATION_NAME = "Walk";
     public static string DEATH_ANIMATION_NAME = "";
     public static string SHOOT_ANIMATION_NAME = "shoot";
-    public static string ATTACK_ANIMATION_NAME = "";
+    public static string ATTACK_ANIMATION_NAME = "Attack";
 
 
 
