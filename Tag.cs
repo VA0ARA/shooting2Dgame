@@ -5,7 +5,7 @@ using UnityEngine;
 public static class Tag 
 {
     public static string player_TAG = "";
-    public static string ENEMY_TAG = "";
+    public static string ENEMY_TAG = "Enemy";
     public static string GAMEPLAYE_CAVES_TAG = "";
 
     public static string HORIZENTAL_AXIS = "Horizontal";

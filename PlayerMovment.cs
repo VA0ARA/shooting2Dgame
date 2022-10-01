@@ -19,10 +19,12 @@ public class PlayerMovment : MonoBehaviour
     private float MoveWaitTime;
     private float waitbeformoving;
     private bool CanMove=true;
+    private PlayerShotingManager playerShotingManager;
 
     private void Awake()
     {
         playeranimation = GetComponent<PlayerAnimation>();
+        playerShotingManager= GetComponent<PlayerShotingManager>();
     }
 
     void Update()
@@ -91,6 +93,7 @@ public class PlayerMovment : MonoBehaviour
         WaitBeforShooting = Time.time + ShootWaitTime;
         StopMOvement();
         playeranimation.PlayAnimation(Tag.SHOOT_ANIMATION_NAME);
+        playerShotingManager.Shoot(transform.localScale.x);
     }
     void CheckIfCanMove()
     {
